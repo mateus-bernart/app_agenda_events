@@ -56,7 +56,7 @@ export default function Dashboard() {
                 </Link>
             </div>
             {events.length > 0 && (
-                <div className="flex flex-col gap-4">
+                <div className="mb-4 flex flex-col gap-4">
                     {events.map((event) => (
                         <Card className="relative mx-4">
                             <CardHeader className="font-bold">{event.title}</CardHeader>
