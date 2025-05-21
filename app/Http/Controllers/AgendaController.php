@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Event;
+use Illuminate\Http\Request;
+
+class AgendaController extends Controller
+{
+    public function index()
+    {
+        $events = Event::all();
+        return inertia('Agenda/Index')->with('events', $events);
+    }
+
+    public function create()
+    {
+        return inertia('Agenda/Create');
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'location' => 'required|string',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+        ]);
+
+        Event::create([
+            'title' => $validated['title'],
+            'description' => $validated['description'],
+            'start_date' => $validated['start_date'],
+            'end_date' => $validated['end_date'],
+            'user_id' => auth()->id(),
+        ]);
+
+        return redirect()->route('agenda.index')->with('message', 'Event created successfully.');
+    }
+}
