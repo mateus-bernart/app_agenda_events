@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -13,9 +13,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 
-    Route::get('agenda', [AgendaController::class, 'index'])->name('agenda.index');
-    Route::get('agenda/create', [AgendaController::class, 'create'])->name('agenda.create');
-    Route::post('agenda', [AgendaController::class, 'store'])->name('agenda.store');
+    Route::get('schedule', [ScheduleController::class, 'index'])->name('schedule.index');
+    Route::get('schedule/create', [ScheduleController::class, 'create'])->name('schedule.create');
+
+    Route::post('schedule', [ScheduleController::class, 'store'])->name('schedule.store');
+    Route::delete('schedule/{event}', [ScheduleController::class, 'destroy'])->name('schedule.destroy');
 });
 
 require __DIR__ . '/settings.php';

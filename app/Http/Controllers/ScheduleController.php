@@ -5,17 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
-class AgendaController extends Controller
+class ScheduleController extends Controller
 {
     public function index()
     {
         $events = Event::all();
-        return inertia('Agenda/Index')->with('events', $events);
+        return inertia('Schedule/Index')->with('events', $events);
     }
 
     public function create()
     {
-        return inertia('Agenda/Create');
+        return inertia('Schedule/Create');
     }
 
     public function store(Request $request)
@@ -36,6 +36,12 @@ class AgendaController extends Controller
             'user_id' => auth()->id(),
         ]);
 
-        return redirect()->route('agenda.index')->with('message', 'Event created successfully.');
+        return redirect()->route('schedule.index')->with('message', 'Event created successfully.');
+    }
+
+    public function destroy(Event $event)
+    {
+        $event->delete();
+        return redirect()->route('schedule.index')->with('message', 'Event deleted successfully.');
     }
 }

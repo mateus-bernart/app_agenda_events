@@ -23,8 +23,8 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: '/dashboard',
     },
     {
-        title: 'Agenda',
-        href: '/agenda',
+        title: 'Schedule',
+        href: '/schedule',
     },
 ];
 
@@ -49,7 +49,7 @@ export default function Dashboard() {
             return;
         }
 
-        post(route('agenda.store'));
+        post(route('schedule.store'));
     };
 
     return (

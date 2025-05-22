@@ -14,8 +14,8 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
     },
     {
-        title: 'Agenda',
-        href: '/agenda',
+        title: 'Schedule',
+        href: '/schedule',
         icon: Calendar,
     },
 ];
