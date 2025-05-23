@@ -15,8 +15,8 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: '/dashboard',
     },
     {
-        title: 'Schedule',
-        href: '/schedule',
+        title: 'Event',
+        href: '/event',
     },
 ];
 
@@ -27,14 +27,14 @@ type PageProps = {
     events: Event[];
 };
 
-export default function Dashboard() {
+export default function Index() {
     const { flash, events } = usePage<PageProps>().props;
     const { delete: destroy, processing } = useForm();
     const [query, setQuery] = useState<string>('');
 
     const handleDeleteEvent = (eventId: number) => {
         if (confirm('Are you sure you want to delete this event?')) {
-            destroy(route('schedule.destroy', eventId));
+            destroy(route('event.destroy', eventId));
         }
     };
 
@@ -63,14 +63,14 @@ export default function Dashboard() {
                 ></Input>
             </div>
             <div className="mb-4 ml-4">
-                <Link href={route('schedule.create')}>
-                    <Button>Add event</Button>
+                <Link href={route('event.create')}>
+                    <Button className="text-md cursor-pointer bg-green-500 font-bold hover:bg-green-600">Add event</Button>
                 </Link>
             </div>
             {filteredEvents.length > 0 ? (
                 <div className="mx-4 mb-4 flex flex-wrap gap-4">
                     {filteredEvents.map((event) => (
-                        <div className="w-full sm:w-[48%] md:w-[31%]">
+                        <div className="w-full sm:w-[48%] md:w-[31%]" key={event.id}>
                             <Card className="relative h-full" key={event.id}>
                                 <CardHeader className="font-bold">
                                     <CardTitle>{event.title}</CardTitle>
@@ -86,7 +86,11 @@ export default function Dashboard() {
                                         End date: <span className="font-bold">{new Date(event.end_date).toLocaleDateString('pt-BR')}</span>
                                     </p>
                                 </CardFooter>
-                                <Button onClick={() => handleDeleteEvent(event.id)} className="absolute top-4 right-4" disabled={processing}>
+                                <Button
+                                    onClick={() => handleDeleteEvent(event.id)}
+                                    className="absolute top-4 right-4 cursor-pointer bg-red-500 hover:bg-red-700"
+                                    disabled={processing}
+                                >
                                     <Trash />
                                 </Button>
                             </Card>

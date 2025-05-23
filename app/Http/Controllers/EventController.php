@@ -10,12 +10,12 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::all();
-        return inertia('Schedule/Index')->with('events', $events);
+        return inertia('Event/Index')->with('events', $events);
     }
 
     public function create()
     {
-        return inertia('Schedule/Create');
+        return inertia('Event/Create');
     }
 
     public function store(Request $request)
@@ -36,12 +36,12 @@ class EventController extends Controller
             'user_id' => auth()->id(),
         ]);
 
-        return redirect()->route('schedule.index')->with('message', 'Event created successfully.');
+        return redirect()->route('event.index')->with('message', 'Event created successfully.');
     }
 
     public function destroy(Event $event)
     {
         $event->delete();
-        return redirect()->route('schedule.index')->with('message', 'Event deleted successfully.');
+        return redirect()->route('event.index')->with('message', 'Event deleted successfully.');
     }
 }

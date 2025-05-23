@@ -23,12 +23,12 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: '/dashboard',
     },
     {
-        title: 'Schedule',
-        href: '/schedule',
+        title: 'Events',
+        href: '/event',
     },
 ];
 
-export default function Dashboard() {
+export default function Index() {
     const [initialDate, setInitialDate] = React.useState<Date>();
     const [finalDate, setFinalDate] = React.useState<Date | undefined>();
     const [localErrors, setLocalErrors] = React.useState<{ start_date?: string; end_date?: string }>({});
@@ -43,13 +43,10 @@ export default function Dashboard() {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(data);
-
         if (localErrors.start_date || localErrors.end_date) {
             return;
         }
-
-        post(route('schedule.store'));
+        post(route('event.store'));
     };
 
     return (

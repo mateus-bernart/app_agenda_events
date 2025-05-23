@@ -12,11 +12,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 
-    Route::get('schedule', [EventController::class, 'index'])->name('schedule.index');
-    Route::get('schedule/create', [EventController::class, 'create'])->name('schedule.create');
+    Route::get('event', [EventController::class, 'index'])->name('event.index');
+    Route::get('event/create', [EventController::class, 'create'])->name('event.create');
 
-    Route::post('schedule', [EventController::class, 'store'])->name('schedule.store');
-    Route::delete('schedule/{event}', [EventController::class, 'destroy'])->name('schedule.destroy');
+    Route::post('event', [EventController::class, 'store'])->name('event.store');
+    Route::delete('event/{event}', [EventController::class, 'destroy'])->name('event.destroy');
 });
 
 require __DIR__ . '/settings.php';

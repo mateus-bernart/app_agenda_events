@@ -4,18 +4,23 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { Calendar, LayoutGrid } from 'lucide-react';
+import { Calendar, LayoutGrid, User2 } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
+    {
+        title: 'Public Page',
+        href: '/',
+        icon: User2,
+    },
     {
         title: 'Dashboard',
         href: '/dashboard',
         icon: LayoutGrid,
     },
     {
-        title: 'Schedule',
-        href: '/schedule',
+        title: 'Events',
+        href: '/event',
         icon: Calendar,
     },
 ];
