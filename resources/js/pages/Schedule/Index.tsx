@@ -7,6 +7,7 @@ import { type BreadcrumbItem } from '@/types';
 import { Head, Link, useForm, usePage } from '@inertiajs/react';
 import { Megaphone, Search, Trash } from 'lucide-react';
 import { useState } from 'react';
+import { Event } from './event-types';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -18,15 +19,6 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: '/schedule',
     },
 ];
-
-type Event = {
-    id: number;
-    title: string;
-    description: string;
-    location: string;
-    start_date: Date;
-    end_date: Date;
-};
 
 type PageProps = {
     flash: {
