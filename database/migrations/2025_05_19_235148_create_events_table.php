@@ -18,6 +18,10 @@ return new class extends Migration
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->integer('user_id')->unsigned();
+            $table->integer('approver_id')->unsigned()->nullable();
+            $table->string('location');
+            $table->string('status')->default('pending');
+            $table->text('approver_comment')->nullable();
             $table->timestamps();
         });
     }

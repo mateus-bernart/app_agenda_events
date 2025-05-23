@@ -23,6 +23,10 @@ export default function Welcome() {
         return event.title.toLowerCase().includes(query.toLowerCase());
     });
 
+    const filteredApprovedEvents = filteredEvents.filter((event) => {
+        return event.status === 'approved';
+    });
+
     return (
         <>
             <Head title="Welcome">
@@ -93,10 +97,10 @@ export default function Welcome() {
                         </div>
 
                         <CardContent>
-                            {filteredEvents.length > 0 ? (
+                            {filteredApprovedEvents.length > 0 ? (
                                 <div className="mx-4 mb-4 flex flex-wrap gap-4">
-                                    {filteredEvents.map((event) => (
-                                        <div className="w-full sm:w-[48%] md:w-[31%]">
+                                    {filteredApprovedEvents.map((event) => (
+                                        <div className="w-full sm:w-[48%] md:w-[31%]" key={event.id}>
                                             <Card className="relative h-full" key={event.id}>
                                                 <CardHeader className="font-bold">
                                                     <CardTitle>{event.title}</CardTitle>

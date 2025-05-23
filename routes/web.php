@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApprovementController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::post('event', [EventController::class, 'store'])->name('event.store');
     Route::delete('event/{event}', [EventController::class, 'destroy'])->name('event.destroy');
+    Route::put('event/{event}/approval', [ApprovementController::class, 'approval'])->name('approvements.approval');
+
+    Route::get('approvement', [ApprovementController::class, 'index'])->name('approvements.index');
+    Route::delete('approvement/{event}', [ApprovementController::class, 'destroy'])->name('approvements.destroy');
 });
 
 require __DIR__ . '/settings.php';

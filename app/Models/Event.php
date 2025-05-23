@@ -13,5 +13,8 @@ class Event extends Model
         'end_date',
         'location',
         'user_id',
+        'status',
+        'approver_id',
+        'approver_comment',
     ];
 }

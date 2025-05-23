@@ -4,7 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { Calendar, LayoutGrid, User2 } from 'lucide-react';
+import { Calendar, Check, LayoutGrid, User2 } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -22,6 +22,11 @@ const mainNavItems: NavItem[] = [
         title: 'Events',
         href: '/event',
         icon: Calendar,
+    },
+    {
+        title: 'Approvements',
+        href: '/approvement',
+        icon: Check,
     },
 ];
 

@@ -38,8 +38,23 @@ export default function Index() {
         }
     };
 
+    const getStatusColor = (status: string) => {
+        switch (status.toLowerCase()) {
+            case 'approved':
+                return 'bg-green-700';
+            case 'rejected':
+                return 'bg-red-700';
+            case 'pending':
+                return 'bg-amber-600';
+        }
+    };
+
     const filteredEvents = events.filter((event) => {
         return event.title.toLowerCase().includes(query.toLowerCase());
+    });
+
+    const filteredApprovedEvents = filteredEvents.filter((event) => {
+        return event.status === 'approved';
     });
 
     return (
@@ -64,12 +79,12 @@ export default function Index() {
             </div>
             <div className="mb-4 ml-4">
                 <Link href={route('event.create')}>
-                    <Button className="text-md cursor-pointer bg-green-500 font-bold hover:bg-green-600">Add event</Button>
+                    <Button className="text-md cursor-pointer bg-green-600 font-bold hover:bg-green-800">Add event</Button>
                 </Link>
             </div>
-            {filteredEvents.length > 0 ? (
+            {filteredApprovedEvents.length > 0 ? (
                 <div className="mx-4 mb-4 flex flex-wrap gap-4">
-                    {filteredEvents.map((event) => (
+                    {filteredApprovedEvents.map((event) => (
                         <div className="w-full sm:w-[48%] md:w-[31%]" key={event.id}>
                             <Card className="relative h-full" key={event.id}>
                                 <CardHeader className="font-bold">
@@ -78,7 +93,7 @@ export default function Index() {
                                 <CardContent className="h-20 text-gray-500">
                                     <CardDescription className="mb-4 line-clamp-3">{event.description}</CardDescription>
                                 </CardContent>
-                                <CardFooter className="flex flex-col gap-2">
+                                <CardFooter className="mb-8 flex flex-col gap-2">
                                     <p>
                                         Start date: <span className="font-bold">{new Date(event.start_date).toLocaleDateString('pt-BR')}</span>
                                     </p>
@@ -88,11 +103,16 @@ export default function Index() {
                                 </CardFooter>
                                 <Button
                                     onClick={() => handleDeleteEvent(event.id)}
-                                    className="absolute top-4 right-4 cursor-pointer bg-red-500 hover:bg-red-700"
+                                    className="absolute top-4 right-4 cursor-pointer bg-red-600 hover:bg-red-800"
                                     disabled={processing}
                                 >
                                     <Trash />
                                 </Button>
+                                <div
+                                    className={`absolute right-0 bottom-0 rounded-tl-lg rounded-br-lg ${getStatusColor(event.status)} p-2 text-center text-white`}
+                                >
+                                    <span className="capitalize">{event.status}</span>
+                                </div>
                             </Card>
                         </div>
                     ))}
