@@ -14,7 +14,19 @@ class Event extends Model
         'location',
         'user_id',
         'status',
-        'approver_id',
-        'approver_comment',
+        'responsible_id',
+        'website_link',
+        'instagram_link',
+        'image',
     ];
+
+    public function responsible()
+    {
+        return $this->belongsTo(Responsible::class, 'responsible_id');
+    }
+
+    public function approvals()
+    {
+        return $this->hasMany(Approval::class);
+    }
 }

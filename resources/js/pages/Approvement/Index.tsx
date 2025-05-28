@@ -42,7 +42,7 @@ export default function Index() {
         approver_comment: '',
     });
 
-    console.log(data);
+    console.log(events);
 
     const handleDeleteEvent = (eventId: number) => {
         if (confirm('Are you sure you want to delete this event?')) {
@@ -98,7 +98,7 @@ export default function Index() {
                 <div className="mx-4 mb-4 flex flex-wrap gap-4">
                     {filteredApprovedEvents.map((event) => (
                         <div className="w-full sm:w-[48%] md:w-[31%]" key={event.id}>
-                            <Card className="relative h-full" key={event.id}>
+                            <Card className="relative h-full transition-all duration-200 hover:shadow-xl" key={event.id}>
                                 <CardHeader className="font-bold">
                                     <CardTitle>{event.title}</CardTitle>
                                 </CardHeader>
@@ -115,7 +115,7 @@ export default function Index() {
                                 </CardFooter>
                                 <Button
                                     onClick={() => handleDeleteEvent(event.id)}
-                                    className="absolute top-4 right-4 cursor-pointer bg-red-600 hover:bg-red-800"
+                                    className="absolute top-4 right-4 cursor-pointer bg-red-600 transition-all duration-200 hover:bg-red-800 hover:shadow-lg"
                                     disabled={processing}
                                 >
                                     <Trash />
@@ -136,7 +136,7 @@ export default function Index() {
                                                 });
                                                 setOpenModal(true);
                                             }}
-                                            className="absolute top-4 right-16 cursor-pointer bg-gray-600 hover:bg-gray-800"
+                                            className="absolute top-4 right-16 cursor-pointer bg-gray-600 transition-all duration-200 hover:bg-gray-800 hover:shadow-lg"
                                             disabled={processing}
                                         >
                                             <Settings />

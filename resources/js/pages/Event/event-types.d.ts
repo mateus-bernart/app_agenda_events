@@ -7,6 +7,9 @@ export type Event = {
     end_date: Date;
     status: string;
     approver_comment: string;
+    website_link: string;
+    instagram_link: string;
+    image: string;
 };
 
 export type EventFormData = {
