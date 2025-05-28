@@ -14,6 +14,8 @@ export default defineConfig({
         react(),
         tailwindcss(),
     ],
+    base: 'https://appagendaevents-production.up.railway.app/build/',
+
     esbuild: {
         jsx: 'automatic',
     },
