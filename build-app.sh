@@ -6,5 +6,6 @@ composer install --no-dev --optimize-autoloader
 
 php artisan config:clear
 php artisan config:cache
+php artisan session:table
 
 php artisan migrate --force
