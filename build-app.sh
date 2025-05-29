@@ -2,6 +2,9 @@
 
 set -e
 
+# Limpa o build anterior
+rm -rf public/build
+
 composer install --no-dev --optimize-autoloader
 
 php artisan migrate --force
