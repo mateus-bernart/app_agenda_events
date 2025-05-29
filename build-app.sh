@@ -4,6 +4,7 @@ set -e
 
 echo "🔧 Limpando build anterior..."
 rm -rf public/build
+rm -f public/hot
 
 echo "📦 Instalando dependências do PHP..."
 composer install --no-dev --optimize-autoloader

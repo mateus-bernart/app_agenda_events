@@ -19,11 +19,11 @@ export default function Welcome() {
 
     const [query, setQuery] = useState<string>('');
 
-    const filteredEvents = events.filter((event) => {
+    const filteredEvents = events.filter((event: any) => {
         return event.title.toLowerCase().includes(query.toLowerCase());
     });
 
-    const filteredApprovedEvents = filteredEvents.filter((event) => {
+    const filteredApprovedEvents = filteredEvents.filter((event: any) => {
         return event.status === 'approved';
     });
 
