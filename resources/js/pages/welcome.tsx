@@ -15,6 +15,7 @@ type PageProps = {
 export default function Welcome() {
     const { auth } = usePage<SharedData>().props;
     const { events, user } = usePage<PageProps>().props;
+    
     console.log(user);
 
     const [query, setQuery] = useState<string>('');

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApprovementController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -22,6 +23,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('approvement', [ApprovementController::class, 'index'])->name('approvements.index');
     Route::delete('approvement/{event}', [ApprovementController::class, 'destroy'])->name('approvements.destroy');
+
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
+    Route::put('users/{user}', [UserController::class, 'updateUserType'])->name('users.updateUserType');
 });
 
 require __DIR__ . '/settings.php';
