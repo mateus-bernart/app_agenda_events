@@ -15,7 +15,7 @@ type PageProps = {
 export default function Welcome() {
     const { auth } = usePage<SharedData>().props;
     const { events, user } = usePage<PageProps>().props;
-    
+
     console.log(user);
 
     const [query, setQuery] = useState<string>('');
@@ -31,7 +31,7 @@ export default function Welcome() {
     return (
         <>
             <div className="relative h-screen w-full">
-                <img src="background.jpg" alt="Background" className="absolute inset-0 z-0 h-full w-full object-cover opacity-90" />{' '}
+                <img src="background.png" alt="Background" className="absolute inset-0 z-0 h-full w-full object-cover opacity-90" />{' '}
                 <Head title="Welcome">
                     <link rel="preconnect" href="https://fonts.bunny.net" />
                     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
