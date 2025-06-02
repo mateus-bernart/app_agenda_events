@@ -31,45 +31,52 @@ export default function Welcome() {
     return (
         <>
             <div className="relative h-screen w-full">
-                <img src="background.png" alt="Background" className="absolute inset-0 z-0 h-full w-full object-cover opacity-90" />{' '}
+                <img
+                    src="background.png"
+                    alt="Background"
+                    className="absolute inset-0 z-0 h-full w-full object-cover"
+                    style={{ opacity: 0.9, pointerEvents: 'none' }}
+                />
                 <Head title="Welcome">
                     <link rel="preconnect" href="https://fonts.bunny.net" />
                     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
                 </Head>
-                <div className="relative z-10 flex min-h-screen flex-col items-center p-6 text-[#1b1b18] lg:justify-center lg:p-8 dark:bg-[#0a0a0a]">
+                <div className="relative z-10 flex min-h-screen flex-col items-center p-6 text-[#1b1b18] lg:justify-center lg:p-8 dark:bg-transparent">
                     <header className="mb-6 w-full max-w-[335px] text-sm not-has-[nav]:hidden lg:max-w-4xl">
                         <nav className="flex items-center justify-end gap-4">
-                            {auth.user && user.user_type === 'admin' ? (
-                                <div>
-                                    <Link
-                                        href={route('dashboard')}
-                                        className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-                                    >
-                                        Dashboard
-                                    </Link>
-                                </div>
-                            ) : (
-                                <>
-                                    <Link
-                                        href={route('login')}
-                                        className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-lg leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-                                    >
-                                        Log in
-                                    </Link>
-                                    <Link
-                                        href={route('register')}
-                                        className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-lg leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-                                    >
-                                        Register
-                                    </Link>
-                                </>
-                            )}
+                            <div>
+                                {auth.user && user.user_type === 'admin' ? (
+                                    <div>
+                                        <Link
+                                            href={route('dashboard')}
+                                            className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+                                        >
+                                            Dashboard
+                                        </Link>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <Link
+                                            href={route('login')}
+                                            className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-lg leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
+                                        >
+                                            Log in
+                                        </Link>
+                                        <Link
+                                            href={route('register')}
+                                            className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-lg leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+                                        >
+                                            Register
+                                        </Link>
+                                    </>
+                                )}
+                            </div>
                         </nav>
                     </header>
 
                     <div className="flex w-full flex-col items-center justify-center gap-4 opacity-100 transition-opacity duration-750 starting:opacity-0">
                         <Card className="relative flex w-full max-w-6xl flex-col">
-                            <img src="logo1.jpg" alt="logo" width={100} height={100} className="absolute top-1 right-1" />
+                            <img src="logo1.png" alt="logo" width={100} height={100} className="absolute top-1 right-1" />
 
                             <div>
                                 <CardHeader className="font-serif text-xl font-bold">Upcoming events</CardHeader>

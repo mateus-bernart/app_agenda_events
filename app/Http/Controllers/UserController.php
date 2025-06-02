@@ -22,8 +22,8 @@ class UserController extends Controller
         ]);
 
         // Assuming User model is used
-        $user = \App\Models\User::findOrFail($user);
-        $user->update($validatedData);
+        $user = User::findOrFail($user);
+        $user->update(['user_type' => $validatedData['user_type']]);
 
         return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }

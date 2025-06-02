@@ -40,7 +40,7 @@ export default function Index() {
         user_id: null,
         name: '',
         email: '',
-        user_type: 'user',
+        user_type: 'admin',
     });
 
     const handleDeleteUser = (eventId: number) => {
@@ -133,10 +133,7 @@ export default function Index() {
                                                             <Label htmlFor="status" className="text-right">
                                                                 Status
                                                             </Label>
-                                                            <Select
-                                                                onValueChange={(value) => setData('user_type', value)}
-                                                                defaultValue={data.user_type}
-                                                            >
+                                                            <Select onValueChange={(value) => setData('user_type', value)} value={data.user_type}>
                                                                 <SelectTrigger id="status" className="col-span-3 cursor-pointer">
                                                                     <SelectValue placeholder="Select a status" />
                                                                 </SelectTrigger>
