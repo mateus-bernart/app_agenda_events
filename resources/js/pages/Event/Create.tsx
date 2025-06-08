@@ -4,15 +4,13 @@ import { Calendar } from '@/components/ui/calendar';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Popover, PopoverContent } from '@/components/ui/popover';
-import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import AppLayout from '@/layouts/app-layout';
 import { cn } from '@/lib/utils';
 import { type BreadcrumbItem } from '@/types';
 import { Head, useForm } from '@inertiajs/react';
-import { PopoverTrigger } from '@radix-ui/react-popover';
-import { SelectValue } from '@radix-ui/react-select';
 import { format } from 'date-fns';
 import { CalendarIcon, Globe, Instagram } from 'lucide-react';
 import React from 'react';
@@ -29,7 +27,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Index() {
-    const [initialDate, setInitialDate] = React.useState<Date>();
+    const [initialDate, setInitialDate] = React.useState<Date | undefined>();
     const [finalDate, setFinalDate] = React.useState<Date | undefined>();
     const [localErrors, setLocalErrors] = React.useState<{ start_date?: string; end_date?: string }>({});
 
@@ -109,10 +107,10 @@ export default function Index() {
                                                 )}
                                             >
                                                 <CalendarIcon className="mr-2 h-4 w-4" />
-                                                {initialDate ? format(initialDate, 'PPP') : <span>Pick a date</span>}
+                                                {initialDate ? format(initialDate, 'dd/MM/yyyy') : <span>Pick a date</span>}
                                             </Button>
                                         </PopoverTrigger>
-                                        <PopoverContent>
+                                        <PopoverContent className="w-auto">
                                             <Calendar
                                                 mode="single"
                                                 selected={initialDate}
@@ -148,10 +146,10 @@ export default function Index() {
                                                 className={cn('w-[280px] justify-start text-left font-normal', !finalDate && 'text-muted-foreground')}
                                             >
                                                 <CalendarIcon className="mr-2 h-4 w-4" />
-                                                {finalDate ? format(finalDate, 'PPP') : <span>Pick a date</span>}
+                                                {finalDate ? format(finalDate, 'dd/MM/yyyy') : <span>Pick a date</span>}
                                             </Button>
                                         </PopoverTrigger>
-                                        <PopoverContent>
+                                        <PopoverContent className="w-auto p-0">
                                             <Calendar
                                                 mode="single"
                                                 selected={finalDate}
