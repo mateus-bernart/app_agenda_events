@@ -12,7 +12,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
     Route::get('event', [EventController::class, 'index'])->name('event.index');
     Route::get('event/create/{date?}', [EventController::class, 'create'])->name('event.create');
