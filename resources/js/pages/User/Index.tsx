@@ -101,13 +101,6 @@ export default function Index() {
                                     <TableCell>{user.email}</TableCell>
                                     <TableCell>{user.user_type}</TableCell>
                                     <TableCell className="flex gap-2">
-                                        <Button
-                                            onClick={() => handleDeleteUser(user.id)}
-                                            className="bg-red-500 hover:bg-red-700"
-                                            disabled={processing}
-                                        >
-                                            Delete
-                                        </Button>
                                         <Dialog open={openModal} onOpenChange={setOpenModal}>
                                             <DialogTrigger asChild>
                                                 <span className="flex items-center gap-2">
@@ -164,6 +157,13 @@ export default function Index() {
                                                 </form>
                                             </DialogContent>
                                         </Dialog>
+                                        <Button
+                                            onClick={() => handleDeleteUser(user.id)}
+                                            className="bg-red-500 hover:bg-red-700"
+                                            disabled={processing}
+                                        >
+                                            Delete
+                                        </Button>
                                     </TableCell>
                                 </TableRow>
                             ))}

@@ -15,9 +15,11 @@ class EventController extends Controller
         return inertia('Event/Index')->with('events', $events);
     }
 
-    public function create()
+    public function create(?string $date = null)
     {
-        return inertia('Event/Create');
+        return inertia('Event/Create', [
+            'initialDate' => $date,
+        ]);
     }
 
     public function store(Request $request)

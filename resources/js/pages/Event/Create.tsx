@@ -10,10 +10,10 @@ import { Textarea } from '@/components/ui/textarea';
 import AppLayout from '@/layouts/app-layout';
 import { cn } from '@/lib/utils';
 import { type BreadcrumbItem } from '@/types';
-import { Head, useForm } from '@inertiajs/react';
+import { Head, useForm, usePage } from '@inertiajs/react';
 import { format } from 'date-fns';
 import { CalendarIcon, Globe, Instagram } from 'lucide-react';
-import React from 'react';
+import React, { useState } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -27,15 +27,17 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Index() {
-    const [initialDate, setInitialDate] = React.useState<Date | undefined>();
-    const [finalDate, setFinalDate] = React.useState<Date | undefined>();
-    const [localErrors, setLocalErrors] = React.useState<{ start_date?: string; end_date?: string }>({});
+    const props = usePage<{ initialDate?: string }>().props;
+
+    const [initialDate, setInitialDate] = useState<Date | undefined>(props.initialDate ? new Date(`${props.initialDate}T00:00`) : undefined);
+    const [finalDate, setFinalDate] = useState<Date | undefined>();
+    const [localErrors, setLocalErrors] = useState<{ start_date?: string; end_date?: string }>({});
 
     const { data, setData, post, processing, errors } = useForm({
         title: '',
         description: '',
         location: '',
-        start_date: '',
+        start_date: props.initialDate,
         end_date: '',
         responsible_phone: '',
         responsible_email: '',
@@ -49,8 +51,6 @@ export default function Index() {
         if (localErrors.start_date || localErrors.end_date) {
             return;
         }
-        console.log(data);
-
         post(route('event.store'));
     };
 
