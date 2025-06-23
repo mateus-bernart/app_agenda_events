@@ -138,7 +138,9 @@ export default function Index() {
                                 </div>
 
                                 <div className="flex flex-col gap-2">
-                                    <Label>End date</Label>
+                                    <Label>
+                                        End date <span className="text-gray-400">(optional)</span>
+                                    </Label>
                                     <Popover>
                                         <PopoverTrigger asChild>
                                             <Button

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('location');
             $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->dateTime('end_date')->nullable();
             $table->integer('user_id')->unsigned();
             $table->string('status');
             $table->integer('responsible_id')->unsigned()->nullable();

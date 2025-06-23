@@ -29,7 +29,7 @@ class EventController extends Controller
             'description' => 'required|string',
             'location' => 'required|string',
             'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:start_date',
+            'end_date' => 'date|after_or_equal:start_date|nullable',
             'responsible_phone' => 'string|max:15|unique:responsibles,phone',
             'responsible_email' => 'email|max:255|unique:responsibles,email',
             'website_link' => 'nullable|url|max:255',
@@ -64,7 +64,7 @@ class EventController extends Controller
             'image' => $validated['image'] ? $request->file('image')->store('images', 'public') : null,
         ]);
 
-        return Inertia::location(route('event.index'));
+        return Inertia::location(route('dashboard'));
     }
 
     public function destroy(Event $event)
