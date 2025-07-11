@@ -10,7 +10,7 @@ class UserController extends Controller
     public function index()
     {
         return inertia('User/Index', [
-            'users' => User::all(),
+            'users' => User::where('id', '!=', auth()->user()->id)->get(),
         ]);
     }
 
