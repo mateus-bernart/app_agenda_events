@@ -34,6 +34,12 @@ export default function Register() {
     return (
         <AuthLayout title="Create an account" description="Enter your details below to create your account">
             <Head title="Register" />
+            <img
+                src="background.png"
+                alt="Background"
+                className="absolute inset-0 z-0 h-full w-full object-cover"
+                style={{ opacity: 0.9, pointerEvents: 'none' }}
+            />
             <form className="flex flex-col gap-6" onSubmit={submit}>
                 <div className="grid gap-6">
                     <div className="grid gap-2">
@@ -107,7 +113,7 @@ export default function Register() {
                     </Button>
                 </div>
 
-                <div className="text-muted-foreground text-center text-sm">
+                <div className="text-muted-foreground z-10 rounded-md bg-white p-4 text-center text-sm shadow-md dark:bg-[#191400]">
                     Already have an account?{' '}
                     <TextLink href={route('login')} tabIndex={6}>
                         Log in

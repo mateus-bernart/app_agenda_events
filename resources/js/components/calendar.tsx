@@ -88,7 +88,7 @@ export default function GeneralCalendar({ events }: GeneralCalendarProps) {
                                                 events?.filter(
                                                     (event) => isSameDay(new Date(event.start_date), dayClone) && event.status === 'approved',
                                                 ).length > 0 && (
-                                                    <div className="flex h-5 w-10 items-center justify-center rounded-full bg-green-200">
+                                                    <div className="flex h-5 w-7 items-center justify-center rounded-full bg-green-200">
                                                         <span className="font-sans text-base font-semibold">
                                                             {
                                                                 events?.filter(
@@ -105,7 +105,7 @@ export default function GeneralCalendar({ events }: GeneralCalendarProps) {
                                                     events?.filter(
                                                         (event) => isSameDay(new Date(event.start_date), dayClone) && event.status === 'pending',
                                                     ).length > 0 && (
-                                                        <div className="flex h-5 w-10 items-center justify-center rounded-full bg-amber-200">
+                                                        <div className="flex h-5 w-7 items-center justify-center rounded-full bg-amber-200">
                                                             <span className="font-sans text-base font-semibold">
                                                                 {
                                                                     events?.filter(
