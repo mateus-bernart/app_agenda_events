@@ -27,6 +27,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('users', [UserController::class, 'index'])->name('users.index');
     Route::put('users/{user}', [UserController::class, 'updateUserType'])->name('users.updateUserType');
+    Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 });
 
 require __DIR__ . '/settings.php';
