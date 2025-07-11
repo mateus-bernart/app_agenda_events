@@ -42,8 +42,6 @@ export default function Index() {
         approver_comment: '',
     });
 
-    console.log(events);
-
     const handleDeleteEvent = (eventId: number) => {
         if (confirm('Are you sure you want to delete this event?')) {
             destroy(route('approvements.destroy', eventId));

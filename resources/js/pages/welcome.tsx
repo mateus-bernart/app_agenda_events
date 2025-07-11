@@ -16,8 +16,6 @@ export default function Welcome() {
     const { auth } = usePage<SharedData>().props;
     const { events, user } = usePage<PageProps>().props;
 
-    console.log(user);
-
     const [query, setQuery] = useState<string>('');
 
     const filteredEvents = events.filter((event: any) => {
@@ -28,9 +26,12 @@ export default function Welcome() {
         return event.status === 'approved';
     });
 
+    console.log('user auth', auth.user);
+    console.log('user entity', user);
+
     return (
         <>
-            <div className="relative h-screen w-full">
+            <div className="relative h-screen w-full overflow-hidden bg-white dark:bg-gray-100">
                 <img
                     src="background.png"
                     alt="Background"
@@ -75,7 +76,7 @@ export default function Welcome() {
                     </header>
 
                     <div className="flex w-full flex-col items-center justify-center gap-4 opacity-100 transition-opacity duration-750 starting:opacity-0">
-                        <Card className="relative flex w-full max-w-6xl flex-col">
+                        <Card className="relative flex w-full max-w-6xl flex-col dark:bg-gray-800">
                             <img src="logo1.png" alt="logo" width={100} height={100} className="absolute top-1 right-1" />
 
                             <div>
@@ -85,7 +86,7 @@ export default function Welcome() {
                                     <Search />
                                     <Input
                                         placeholder="Search event"
-                                        className=""
+                                        className="dark:bg-gray-500 dark:text-white dark:placeholder:text-white"
                                         onChange={(e) => {
                                             setQuery(e.target.value);
                                         }}
