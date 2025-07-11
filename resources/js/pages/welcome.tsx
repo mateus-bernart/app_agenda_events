@@ -26,8 +26,7 @@ export default function Welcome() {
         return event.status === 'approved';
     });
 
-    console.log('user auth', auth.user);
-    console.log('user entity', user);
+    console.log(user);
 
     return (
         <>
@@ -45,15 +44,21 @@ export default function Welcome() {
                 <div className="relative z-10 flex min-h-screen flex-col items-center p-6 text-[#1b1b18] lg:justify-center lg:p-8 dark:bg-transparent">
                     <header className="mb-6 w-full max-w-[335px] text-sm not-has-[nav]:hidden lg:max-w-4xl">
                         <nav className="flex items-center justify-end gap-4">
-                            <div className="rounded-md bg-white p-2 shadow-md dark:bg-[#191400]">
-                                {auth.user && user.user_type === 'admin' ? (
-                                    <div>
+                            <div>
+                                {auth.user ? (
+                                    <div className="rounded-md bg-white p-2 shadow-md dark:bg-[#191400]">
                                         <Link
                                             href={route('dashboard')}
                                             className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
                                         >
                                             Dashboard
                                         </Link>
+                                        {/* <Link
+                                            href={route('register')}
+                                            className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-lg leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
+                                        >
+                                            Register
+                                        </Link> */}
                                     </div>
                                 ) : (
                                     <div className="flex items-center gap-2">
@@ -62,12 +67,6 @@ export default function Welcome() {
                                             className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-lg leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
                                         >
                                             Log in
-                                        </Link>
-                                        <Link
-                                            href={route('register')}
-                                            className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-lg leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-                                        >
-                                            Register
                                         </Link>
                                     </div>
                                 )}
