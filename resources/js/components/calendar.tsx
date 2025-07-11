@@ -38,9 +38,11 @@ export default function GeneralCalendar({ events }: GeneralCalendarProps) {
                         <PopoverTrigger asChild>
                             <div
                                 key={day.toISOString()}
-                                className={`flex h-20 w-full cursor-pointer flex-col items-start justify-start rounded-lg border p-2 duration-200 hover:bg-gray-200 hover:shadow-lg sm:h-32 ${!isSameMonth(day, currentMonth) ? 'bg-gray-100 text-gray-400 dark:bg-gray-400' : ''} ${isSameDay(day, new Date()) ? 'bg-blue-50' : ''} `}
+                                className={`flex h-20 w-full cursor-pointer flex-col items-start justify-start rounded-lg border p-2 duration-200 hover:bg-gray-200 hover:shadow-lg sm:h-32 dark:hover:bg-gray-600 ${!isSameMonth(day, currentMonth) ? 'bg-gray-100 text-gray-400 dark:bg-gray-900' : ''} ${isSameDay(day, new Date()) ? 'bg-blue-50 dark:bg-gray-600' : ''} `}
                             >
-                                <span className="text-sm font-semibold dark:text-black">{format(day, 'd', { locale: ptBR })}</span>
+                                <span className={`text-sm font-semibold dark:text-white ${isSameDay(day, new Date()) ?? 'text-black'}`}>
+                                    {format(day, 'd', { locale: ptBR })}
+                                </span>
                                 {/* Espaço para eventos ou conteúdo */}
                                 <div className="mt-1 text-xs text-gray-600">
                                     {window.innerWidth > 768 ? (

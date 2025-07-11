@@ -86,7 +86,7 @@ export default function Index() {
                 <div className="mx-4 mb-4 flex flex-wrap gap-4">
                     {filteredApprovedEvents.map((event) => (
                         <div className="w-full sm:w-[48%] md:w-[31%]" key={event.id}>
-                            <Card className="relative h-full" key={event.id}>
+                            <Card className="relative h-full transition-all duration-200 dark:bg-gray-500 dark:hover:bg-gray-600" key={event.id}>
                                 <CardHeader className="font-bold">
                                     <CardTitle>{event.title}</CardTitle>
                                 </CardHeader>

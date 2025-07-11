@@ -98,7 +98,10 @@ export default function Index() {
                 <div className="mx-4 mb-4 flex flex-wrap gap-4">
                     {filteredApprovedEvents.map((event) => (
                         <div className="w-full sm:w-[48%] md:w-[31%]" key={event.id}>
-                            <Card className="relative h-full transition-all duration-200 hover:shadow-xl" key={event.id}>
+                            <Card
+                                className="relative h-full transition-all duration-200 hover:shadow-xl dark:bg-gray-500 dark:hover:bg-gray-600 dark:hover:shadow-lg"
+                                key={event.id}
+                            >
                                 <CardHeader className="font-bold">
                                     <CardTitle>{event.title}</CardTitle>
                                 </CardHeader>
@@ -136,7 +139,7 @@ export default function Index() {
                                                 });
                                                 setOpenModal(true);
                                             }}
-                                            className="absolute top-4 right-16 cursor-pointer bg-gray-600 transition-all duration-200 hover:bg-gray-800 hover:shadow-lg"
+                                            className="absolute top-4 right-16 cursor-pointer bg-gray-600 transition-all duration-200 hover:bg-gray-800 hover:shadow-lg dark:bg-gray-300 dark:hover:bg-gray-400"
                                             disabled={processing}
                                         >
                                             <Settings />
