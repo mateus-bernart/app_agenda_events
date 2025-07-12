@@ -26,8 +26,6 @@ export default function Welcome() {
         return event.status === 'approved';
     });
 
-    console.log(user);
-
     return (
         <>
             <div className="relative h-screen w-full overflow-hidden bg-white dark:bg-gray-100">
