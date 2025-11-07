@@ -33,7 +33,7 @@ export default function Index() {
     const [finalDate, setFinalDate] = useState<Date | undefined>();
     const [localErrors, setLocalErrors] = useState<{ start_date?: string; end_date?: string }>({});
 
-    const { data, setData, post, processing, errors } = useForm({
+    const { data, setData, post, errors } = useForm({
         title: '',
         description: '',
         location: '',

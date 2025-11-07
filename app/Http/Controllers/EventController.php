@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Responsible;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class EventController extends Controller
@@ -56,7 +57,7 @@ class EventController extends Controller
             'start_date' => $validated['start_date'],
             'location' => $validated['location'],
             'end_date' => $validated['end_date'],
-            'user_id' => auth()->id(),
+            'user_id' => Auth::id(),
             'status' => 'pending',
             'responsible_id' => $responsible->id,
             'website_link' => $validated['website_link'],
